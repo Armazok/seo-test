@@ -8,12 +8,12 @@ import { Image } from 'next/dist/client/image-component';
 export default function Home() {
     const buttons = [
         {label: 'Button 1', id: useId(), tabIndex: 2},
-        {label: 'Button 2', id: useId(), tabIndex: 1},
-        {label: 'Button 3', id: useId(), tabIndex: 3},
+        {label: 'Button 2', id: useId(), tabIndex: 0},
+        {label: 'Button 3', id: useId(), tabIndex: 1},
     ];
 
     return (
-        <div>
+        <div role='main'>
             <h1>SEO Test</h1>
             {buttons.map(({label, id, tabIndex}) => (
                 <Button
