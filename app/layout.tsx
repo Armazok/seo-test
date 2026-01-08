@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
 import './globals.scss';
+import { headers } from 'next/dist/server/request/headers';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -58,16 +59,20 @@ export const metadata: Metadata = {
     keywords: [ 'Next.js', 'SEO', 'robots', 'sitemap', 'frontend' ]
 };
 
-export default function RootLayout({
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: ReactNode;
 }>) {
+    const headersList = await headers();
+    const nonce = headersList.get('x-nonce') ?? '';
+
     return (
         <html lang="en">
         {/* Google Tag Manager */}
         <Head>
             <Script
+                nonce={nonce}
                 id="gtm-script"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
