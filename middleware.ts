@@ -1,9 +1,10 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
 
 export function middleware(req: NextRequest) {
-    const nonce = crypto.randomBytes(16).toString('base64');
+    const nonce = Buffer.from(
+        crypto.getRandomValues(new Uint8Array(16))
+    ).toString('base64');
 
     const csp = `
   default-src 'self';
@@ -23,10 +24,10 @@ export function middleware(req: NextRequest) {
   object-src 'none';
   require-trusted-types-for 'script';
   trusted-types nextjs next-router;
+  sandbox allow-scripts allow-same-origin;
   block-all-mixed-content;
 `.replace(/\s{2,}/g, ' ').trim();
 
-   //  sandbox allow-scripts allow-same-origin;
     const res = NextResponse.next();
 
     res.headers.set('Content-Security-Policy', csp);
