@@ -16,6 +16,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: 'Рекомендуемая длина составляет от 30 до 60 символов',
     description: 'Рекомендуемое описание составляет от 120 символов до 320 символов, тут мы сделаем заглушку из Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque dignissimos eos harum, ipsum iure laborum molestiae nihil nisi optio perspiciatis quod quos, repudiandae saepe tempore unde vel, vero voluptas?',
+    openGraph: {
+        title: 'SEO Test',
+        description: 'Test SEO configuration in Next.js App Router',
+        url: 'https://seo-test-ivory.vercel.app',
+        siteName: 'SEO Test Site',
+        images: [
+            {
+                url: 'https://seo-test-ivory.vercel.app/og-image.png',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'SEO Test',
+        description: 'Test SEO configuration in Next.js App Router',
+        images: [ 'https://seo-test-ivory.vercel.app/og-image.png' ],
+        creator: '@yourtwitter',
+    },
+    metadataBase: new URL('https://seo-test-ivory.vercel.app'),
     alternates: {
         canonical: 'https://seo-test-ivory.vercel.app/',
     },
