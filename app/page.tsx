@@ -1,66 +1,39 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { Button } from '@/ui';
+import { useId } from 'react';
+import Link from 'next/dist/client/link';
+import { Image } from 'next/dist/client/image-component';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    const buttons = [
+        {label: 'Button 1', id: useId(), tabIndex: 2},
+        {label: 'Button 2', id: useId(), tabIndex: 1},
+        {label: 'Button 3', id: useId(), tabIndex: 3},
+    ];
+
+    return (
+        <div>
+            <h1>SEO Test</h1>
+            {buttons.map(({label, id, tabIndex}) => (
+                <Button
+                    key={id}
+                    aria-label={label}
+                    title={label}
+                    disabled={false}
+                    tabIndex={tabIndex}
+                >
+                    {label}
+                </Button>
+            ))}
+            <Link title={'Переход на страницу private'} href={'/private'}>Private Link</Link>
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+                src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s'}
+                alt={'На картинке изображен персонаж Disney Стич'}
+                title={'На картинке изображен персонаж Disney Стич'}
+                width={275}
+                height={183}
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
         </div>
-      </main>
-    </div>
-  );
+    );
 }
