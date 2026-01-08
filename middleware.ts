@@ -22,10 +22,11 @@ export function middleware(req: NextRequest) {
   frame-ancestors 'none';
   base-uri 'none';
   object-src 'none';
-  navigate-to 'self';        /* запрет навигации на javascript: URL */
   require-trusted-types-for 'script';
   trusted-types nextjs next-router;
 `.replace(/\s{2,}/g, ' ').trim();
+
+    // navigate-to 'self';        /* запрет навигации на javascript: URL */
 // sandbox allow-scripts allow-same-origin; /* если нужно iframe */
 // unsafe-eval 'none';       /* блокирует eval() */
 // block-all-mixed-content;  /* для безопасности iframe/css */
