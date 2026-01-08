@@ -69,8 +69,8 @@ export default async function RootLayout({
 
     return (
         <html lang="en">
-        {/* Google Tag Manager */}
         <Head>
+            {/*Google Analytics*/}
             <Script
                 nonce={nonce}
                 async src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
@@ -84,6 +84,8 @@ export default async function RootLayout({
                     gtag('config', 'G-MJKXP17LRC');`
                 }}
             />
+
+            {/* Google Search Console */}
             <Script
                 nonce={nonce}
                 id="gtm-script"
@@ -98,7 +100,7 @@ export default async function RootLayout({
             />
         </Head>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Search Console (noscript) */}
         <noscript>
             <iframe
                 src="https://www.googletagmanager.com/ns.html?id=GTM-54M87R22"

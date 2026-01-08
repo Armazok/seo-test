@@ -25,7 +25,6 @@ export const Button = ({
             type={type}
             aria-label={ariaLabel}
             title={title}
-            role={'button'}
             className={cls.Button}
         >
             {children}
