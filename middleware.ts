@@ -1,10 +1,11 @@
+'use client';
+
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 export function middleware(req: NextRequest) {
     const nonce = crypto.randomBytes(16).toString('base64');
-
 
     const csp = `
   default-src 'self';
