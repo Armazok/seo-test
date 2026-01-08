@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
                         key: 'Content-Security-Policy',
                         value: `
               default-src 'self';
-              script-src 'self';
+              script-src 'none';
               style-src 'self' 'unsafe-inline';
               img-src 'self' data:;
               font-src 'self' 'unsafe-inline';
@@ -20,9 +20,7 @@ const nextConfig: NextConfig = {
               base-uri 'none';
               object-src 'none';
               require-trusted-types-for 'script';
-            `
-                            .replace(/\s{2,}/g, ' ')
-                            .trim(),
+            `.replace(/\s{2,}/g, ' ').trim(),
                     },
 
                     // COOP — изоляция контекста
