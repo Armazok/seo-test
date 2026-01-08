@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
 
     const csp = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
     script-src-elem 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
     script-src-attr 'none';
     style-src 'self' https://fonts.googleapis.com;
