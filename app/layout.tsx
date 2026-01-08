@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import './globals.scss';
 import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
+import { randomBytes } from 'crypto';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -63,11 +64,14 @@ export default function RootLayout({
                                    }: Readonly<{
     children: ReactNode;
 }>) {
+    const nonce = randomBytes(16).toString('base64')
+
     return (
         <html lang="en">
         <Head>
             {/* Google Tag Manager */}
             <Script
+                nonce={nonce}
                 id="gtm-script"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
