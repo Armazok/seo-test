@@ -6,13 +6,40 @@ const nextConfig: NextConfig = {
             {
                 source: '/(.*)',
                 headers: [
-                    { key: 'X-Frame-Options', value: 'DENY' }, // clickjacking
-                    { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' }, // изоляция
+                    // CSP — защита от XSS
+                    {
+                        key: 'Content-Security-Policy',
+                        value: `
+              default-src 'self';
+              script-src 'self';
+              style-src 'self';
+              img-src 'self' data:;
+              font-src 'self';
+              connect-src 'self';
+              frame-ancestors 'none';
+              base-uri 'none';
+              object-src 'none';
+              require-trusted-types-for 'script';
+            `
+                            .replace(/\s{2,}/g, ' ')
+                            .trim(),
+                    },
+
+                    // COOP — изоляция контекста
+                    {
+                        key: 'Cross-Origin-Opener-Policy',
+                        value: 'same-origin',
+                    },
+
+                    // XFO — защита от clickjacking (альтернатива frame-ancestors)
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'DENY',
+                    },
                 ],
             },
-        ];
+        ]
     },
-
     images: {
         remotePatterns: [
             {
@@ -24,3 +51,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
