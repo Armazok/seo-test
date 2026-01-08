@@ -1,5 +1,3 @@
-'use client';
-
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
@@ -25,10 +23,10 @@ export function middleware(req: NextRequest) {
   object-src 'none';
   require-trusted-types-for 'script';
   trusted-types nextjs next-router;
-  sandbox allow-scripts allow-same-origin;
   block-all-mixed-content;
 `.replace(/\s{2,}/g, ' ').trim();
 
+   //  sandbox allow-scripts allow-same-origin;
     const res = NextResponse.next();
 
     res.headers.set('Content-Security-Policy', csp);
