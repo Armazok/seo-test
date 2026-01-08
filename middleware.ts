@@ -17,16 +17,17 @@ export function middleware(req: NextRequest) {
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' data:;
   connect-src 'self';
-  frame-src https://www.googletagmanager.com;
+  frame-src 'self' https://www.googletagmanager.com;
   form-action 'self';
   frame-ancestors 'none';
   base-uri 'none';
   object-src 'none';
   require-trusted-types-for 'script';
   trusted-types nextjs next-router;
+  navigate-to 'self'; 
 `.replace(/\s{2,}/g, ' ').trim();
 
-    // navigate-to 'self';        /* запрет навигации на javascript: URL */
+    //        /* запрет навигации на javascript: URL */
 // sandbox allow-scripts allow-same-origin; /* если нужно iframe */
 // unsafe-eval 'none';       /* блокирует eval() */
 // block-all-mixed-content;  /* для безопасности iframe/css */
