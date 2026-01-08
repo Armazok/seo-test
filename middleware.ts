@@ -27,9 +27,8 @@ export function middleware(req: NextRequest) {
   trusted-types nextjs next-router;
   unsafe-eval 'none';       /* блокирует eval() */
   block-all-mixed-content;  /* для безопасности iframe/css */
-  sandbox allow-scripts allow-same-origin; /* если нужно iframe */
 `.replace(/\s{2,}/g, ' ').trim();
-
+// sandbox allow-scripts allow-same-origin; /* если нужно iframe */
 
     const res = NextResponse.next();
 
