@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
     const nonce = Buffer.from(
@@ -13,7 +13,7 @@ export function middleware(req: NextRequest) {
     script-src-attr 'none';
     style-src 'self' https://fonts.googleapis.com;
     style-src-elem 'self' https://fonts.googleapis.com;
-    style-src-attr 'none';
+    style-src-attr 'unsafe-inline';   
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data:;
     connect-src 'self';
