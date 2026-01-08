@@ -14,7 +14,8 @@ export default function Home() {
 
     return (
         <div role='main'>
-            <h1>SEO Test</h1>
+            <h1>SEO Test h1</h1>
+            <h2>Seo Test h2</h2>
             {buttons.map(({label, id, tabIndex}) => (
                 <Button
                     key={id}
