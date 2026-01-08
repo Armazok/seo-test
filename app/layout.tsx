@@ -24,7 +24,7 @@ export const metadata: Metadata = {
             'lwtLIeqFzqONXZlORR181sAQS4erVF7p8p9mIEqV110',
     },
     authors: [
-        { name: 'Nikolay', url: 'https://your-site.com' }
+        { name: 'Nikolay', url: 'https://seo-test-ivory.vercel.app' }
     ],
     publisher: 'Armazok',
     robots: {
