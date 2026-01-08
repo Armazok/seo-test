@@ -6,12 +6,11 @@ const nextConfig: NextConfig = {
             {
                 source: '/(.*)',
                 headers: [
-                    // CSP с внешним GTM, Google Fonts и всеми ресурсами
                     {
                         key: 'Content-Security-Policy',
                         value: `
               default-src 'self';
-              script-src 'self' https://www.googletagmanager.com 'strict-dynamic';
+              script-src 'self' https://www.googletagmanager.com;
               style-src 'self' https://fonts.googleapis.com;
               img-src 'self' data:;
               font-src 'self' https://fonts.gstatic.com;
@@ -19,21 +18,10 @@ const nextConfig: NextConfig = {
               frame-ancestors 'none';
               base-uri 'none';
               object-src 'none';
-              require-trusted-types-for 'script';
             `.replace(/\s{2,}/g, ' ').trim(),
                     },
-
-                    // Защита от clickjacking
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'DENY',
-                    },
-
-                    // COOP — изоляция контекста
-                    {
-                        key: 'Cross-Origin-Opener-Policy',
-                        value: 'same-origin',
-                    },
+                    {key: 'X-Frame-Options', value: 'DENY'},
+                    {key: 'Cross-Origin-Opener-Policy', value: 'same-origin'},
                 ],
             },
         ];
