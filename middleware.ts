@@ -24,10 +24,11 @@ export function middleware(req: NextRequest) {
   object-src 'none';
   require-trusted-types-for 'script';
   trusted-types nextjs next-router;
-  navigate-to 'self'; 
+  sandbox allow-scripts allow-same-origin;
+  unsafe-eval 'none';     
+  block-all-mixed-content;
 `.replace(/\s{2,}/g, ' ').trim();
 
-    //        /* запрет навигации на javascript: URL */
 // sandbox allow-scripts allow-same-origin; /* если нужно iframe */
 // unsafe-eval 'none';       /* блокирует eval() */
 // block-all-mixed-content;  /* для безопасности iframe/css */
