@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import './globals.scss';
 import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
-import { randomBytes } from 'crypto';
+import './globals.scss';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -64,14 +63,11 @@ export default function RootLayout({
                                    }: Readonly<{
     children: ReactNode;
 }>) {
-    const nonce = randomBytes(16).toString('base64')
-
     return (
         <html lang="en">
         <Head>
             {/* Google Tag Manager */}
             <Script
-                nonce={nonce}
                 id="gtm-script"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
@@ -86,8 +82,12 @@ export default function RootLayout({
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54M87R22"
-                    height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe>
+            <iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-54M87R22"
+                height="0"
+                width="0"
+                style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
         </noscript>
         {children}
         </body>
