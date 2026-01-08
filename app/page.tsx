@@ -28,6 +28,7 @@ export default function Home() {
             ))}
             <Link title={'Переход на страницу private'} href={'/private'}>Private Link</Link>
             <Image
+                fetchPriority={'high'}
                 src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s'}
                 alt={'На картинке изображен персонаж Disney Стич'}
                 title={'На картинке изображен персонаж Disney Стич'}

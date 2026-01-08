@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://seo-test-ivory.vercel.app/',
     },
+    other: {
+        'google-site-verification':
+            'lwtLIeqFzqONXZlORR181sAQS4erVF7p8p9mIEqV110',
+    },
 };
 
 export default function RootLayout({
