@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
 import './globals.scss';
+import { randomBytes } from 'crypto';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -63,12 +64,30 @@ export default function RootLayout({
                                    }: Readonly<{
     children: ReactNode;
 }>) {
+    const nonce = randomBytes(16).toString('base64');
+
+    const csp = `
+    default-src 'self';
+    script-src 'nonce-${nonce}' https://www.googletagmanager.com 'strict-dynamic';
+    style-src 'self' https://fonts.googleapis.com;
+    img-src 'self' data:;
+    font-src 'self' https://fonts.gstatic.com;
+    connect-src 'self';
+    frame-ancestors 'none';
+    base-uri 'none';
+    object-src 'none';
+    require-trusted-types-for 'script';
+  `.replace(/\s{2,}/g, ' ').trim();
+
     return (
         <html lang="en">
+        {/* Google Tag Manager */}
         <Head>
-            {/* Google Tag Manager */}
+            <meta httpEquiv="Content-Security-Policy" content={csp} />
             <Script
+                id="gtm-script"
                 strategy="afterInteractive"
+                nonce={nonce}
                 dangerouslySetInnerHTML={{
                     __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
