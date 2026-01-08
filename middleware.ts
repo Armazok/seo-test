@@ -28,10 +28,6 @@ export function middleware(req: NextRequest) {
   block-all-mixed-content;
 `.replace(/\s{2,}/g, ' ').trim();
 
-// sandbox allow-scripts allow-same-origin; /* если нужно iframe */
-// block-all-mixed-content;  /* для безопасности iframe/css */
-
-
     const res = NextResponse.next();
 
     res.headers.set('Content-Security-Policy', csp);
