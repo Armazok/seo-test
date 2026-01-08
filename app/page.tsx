@@ -7,22 +7,21 @@ import { Image } from 'next/dist/client/image-component';
 
 export default function Home() {
     const buttons = [
-        {label: 'Button 1', id: useId(), tabIndex: 0},
-        {label: 'Button 2', id: useId(), tabIndex: 1},
-        {label: 'Button 3', id: useId(), tabIndex: 2},
+        {label: 'Button 1', id: useId()},
+        {label: 'Button 2', id: useId()},
+        {label: 'Button 3', id: useId()},
     ];
 
     return (
         <div role='main'>
             <h1>SEO Test h1</h1>
             <h2>Seo Test h2</h2>
-            {buttons.map(({label, id, tabIndex}) => (
+            {buttons.map(({label, id}) => (
                 <Button
                     key={id}
                     aria-label={label}
                     title={label}
                     disabled={false}
-                    tabIndex={tabIndex}
                 >
                     {label}
                 </Button>
