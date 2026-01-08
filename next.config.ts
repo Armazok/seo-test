@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
                         key: 'Content-Security-Policy',
                         value: `
               default-src 'self';
-              script-src 'none';
+              script-src 'unsafe-inline';
               style-src 'self' 'unsafe-inline';
               img-src 'self' data:;
               font-src 'self' 'unsafe-inline';
