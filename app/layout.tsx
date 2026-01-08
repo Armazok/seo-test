@@ -24,13 +24,14 @@ export const metadata: Metadata = {
             'lwtLIeqFzqONXZlORR181sAQS4erVF7p8p9mIEqV110',
     },
     authors: [
-        { name: 'Nikolay', url: 'https://seo-test-ivory.vercel.app' }
+        {name: 'Nikolay', url: 'https://github.com/Armazok'}
     ],
     publisher: 'Armazok',
     robots: {
         index: true,
         follow: true,
     },
+    keywords: [ 'Next.js', 'SEO', 'robots', 'sitemap', 'frontend' ]
 };
 
 export default function RootLayout({
