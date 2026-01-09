@@ -1,45 +1,26 @@
-export interface ProductsType {
-    products: ProductType[];
-    total:    number;
-    skip:     number;
-    limit:    number;
-}
-
-export interface ProductType {
+export interface ProductByIDType {
     id:                   number;
     title:                string;
     description:          string;
-    category:             Category;
+    category:             string;
     price:                number;
     discountPercentage:   number;
     rating:               number;
     stock:                number;
     tags:                 string[];
-    brand?:               string;
+    brand:                string;
     sku:                  string;
     weight:               number;
     dimensions:           Dimensions;
     warrantyInformation:  string;
     shippingInformation:  string;
-    availabilityStatus:   AvailabilityStatus;
+    availabilityStatus:   string;
     reviews:              Review[];
-    returnPolicy:         ReturnPolicy;
+    returnPolicy:         string;
     minimumOrderQuantity: number;
     meta:                 Meta;
     images:               string[];
     thumbnail:            string;
-}
-
-export enum AvailabilityStatus {
-    InStock = "In Stock",
-    LowStock = "Low Stock",
-}
-
-export enum Category {
-    Beauty = "beauty",
-    Fragrances = "fragrances",
-    Furniture = "furniture",
-    Groceries = "groceries",
 }
 
 export interface Dimensions {
@@ -53,14 +34,6 @@ export interface Meta {
     updatedAt: Date;
     barcode:   string;
     qrCode:    string;
-}
-
-export enum ReturnPolicy {
-    NoReturnPolicy = "No return policy",
-    The30DaysReturnPolicy = "30 days return policy",
-    The60DaysReturnPolicy = "60 days return policy",
-    The7DaysReturnPolicy = "7 days return policy",
-    The90DaysReturnPolicy = "90 days return policy",
 }
 
 export interface Review {

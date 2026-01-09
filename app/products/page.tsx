@@ -2,9 +2,10 @@
 
 import { getAllProducts } from '@/app/products/model/getAllProducts';
 import type { Metadata } from 'next';
+import { ProductsList } from '@/components';
 
 export async function generateMetadata(): Promise<Metadata> {
-    const products = await getAllProducts();
+    const products = await getAllProducts({});
 
     return {
         title: `Наши товары в количестве ${products.total}`,
@@ -14,17 +15,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-    const products = await getAllProducts();
+    const products = await getAllProducts({});
 
     return (
         <section role={'main'} aria-label={'Главная страница продуктов'}>
             <h1 aria-label={'Наши продукты для слабовидящих людей'}>Наши продукты</h1>
-            {products.products.map(p => (
-                <article aria-label={p.title} key={p.id} role={'article'}>
-                    <h2 aria-label={p.title} title={p.title}>{p.title}</h2>
-                    <p aria-label={p.description} title={p.description}>{p.description}</p>
-                </article>
-            ))}
+            <ProductsList products={products}/>
         </section>
     );
 };
