@@ -13,7 +13,7 @@ export default function Home() {
     ];
 
     return (
-        <div role='main'>
+        <div role="main">
             <h1>SEO Test h1</h1>
             <h2>Seo Test h2</h2>
             {buttons.map(({label, id}) => (
@@ -26,7 +26,9 @@ export default function Home() {
                     {label}
                 </Button>
             ))}
-            <Link style={{fontSize: '3rem'}} title={'Переход на страницу private'} href={'/private'}>Private Link</Link>
+            <Link style={{fontSize: '2rem'}} title={'Переход на страницу private'} href={'/private'}>Private Link</Link>
+            <Link style={{fontSize: '2rem'}} title={'Переход на страницу products'} href={'/products'}>Products Link</Link>
+
             <Image
                 fetchPriority={'high'}
                 src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s'}

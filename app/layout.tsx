@@ -68,7 +68,7 @@ export default async function RootLayout({
     const nonce = headersList.get('x-nonce') ?? '';
 
     return (
-        <html lang="en">
+        <html lang="ru">
         <Head>
             {/*Google Analytics*/}
             <Script
