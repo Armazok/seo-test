@@ -11,7 +11,7 @@ export function proxy(req: NextRequest) {
             script-src-elem 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
             script-src-attr 'none';
             style-src 'self' https://fonts.googleapis.com;
-            style-src-elem 'self' https://fonts.googleapis.com;
+            style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
             style-src-attr 'unsafe-inline';
             font-src 'self' https://fonts.gstatic.com;
             img-src 'self' data:;
