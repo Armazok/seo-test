@@ -12,13 +12,13 @@ export const Header = () => {
     ];
 
     return (
-        <header className={cls.Header}>
-            <nav className={cls.Header__nav}>
-                <ul className={cls.Header__lists}>
+        <header className={cls.Header} role={'none'}>
+            <nav className={cls.Header__nav} title={'Навигация по сайту'}>
+                <ul className={cls.Header__lists} role={'none'}>
                     {navArr.map(({id, href, title, label}) => {
                         return (
-                            <li key={id} className={cls.Header__lists__list}>
-                                <a title={title} href={href}>{label}</a>
+                            <li title={title} key={id} className={cls.Header__lists__list}>
+                                <a href={href}>{label}</a>
                             </li>
                         )
                     })}
