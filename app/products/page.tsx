@@ -3,6 +3,8 @@
 import { getAllProducts } from '@/app/products/model/getAllProducts';
 import type { Metadata } from 'next';
 import { ProductsList } from '@/components';
+import Script from 'next/dist/client/script';
+import { headers } from 'next/dist/server/request/headers';
 
 export async function generateMetadata(): Promise<Metadata> {
     const products = await getAllProducts({});
@@ -15,7 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-    const products = await getAllProducts({})
+    const products = await getAllProducts({});
+    const headersList = await headers();
+    const nonce = headersList.get('x-nonce') ?? '';
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -37,7 +41,8 @@ export default async function Page() {
     }
     return (
         <>
-            <script
+            <Script
+                nonce={nonce}
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(jsonLd),
