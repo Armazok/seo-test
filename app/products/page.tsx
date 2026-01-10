@@ -41,15 +41,24 @@ export default async function Page() {
     }
 
     const breadcrumbJsonLd = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
             {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Наши продукты",
-                "item": "https://seo-test-ivory.vercel.app/products"
-            }
+                '@type': 'ListItem',
+                'position': 1,
+                'name': 'Наши продукты',
+                'item': 'https://seo-test-ivory.vercel.app/products'
+            },
+            ...products.products.map((p, index) => ({
+                '@type': 'ListItem',
+                'position': index + 2,
+                'item': {
+                    '@type': 'Product',
+                    'name': p.title,
+                    'url': `https://seo-test-ivory.vercel.app/products/${p.id}`
+                }
+            }))
         ]
     }
 
