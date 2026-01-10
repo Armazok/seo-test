@@ -34,7 +34,7 @@ export default async function Page() {
                 'item': {
                     '@type': 'Product',
                     'name': p.title,
-                    'url': `https://your-site.com/products/${p.id}`,
+                    'url': `https://seo-test-ivory.vercel.app/products/${p.id}`,
                 }
             }))
         }
