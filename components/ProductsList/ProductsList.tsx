@@ -8,6 +8,7 @@ import type { ProductSearchByTitleType } from '@/app/products/model/typeSearchPr
 import { useDebounce } from '@/hook';
 import { searchProductByTitle } from '@/app/products/model/searchProductByTitle';
 import { Input } from '@/ui';
+import { ROUTE } from '@/constants';
 
 type ProductsListType = {
     products: ProductsType | ProductSearchByTitleType;
@@ -33,7 +34,7 @@ export const ProductsList = ({products}: ProductsListType) => {
     }, [ debouncedSearch, products ]);
 
     const onClickProductById = useCallback((id: number) => {
-        push(`/product/${id}`)
+        push(`${ROUTE.PRODUCT}/${id}`)
     }, [ push ]);
 
     const onChangeBySearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {

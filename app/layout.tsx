@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
-import './globals.scss';
 import { headers } from 'next/dist/server/request/headers';
+import { Header } from '@/widgets';
+import './globals.scss';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
         siteName: 'SEO Test Site',
         images: [
             {
-                url: 'https://seo-test-ivory.vercel.app/og-image.png',
+                alt: '',
+                url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s',
                 width: 1200,
                 height: 630,
             },
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'SEO Test',
         description: 'Test SEO configuration in Next.js App Router',
-        images: [ 'https://seo-test-ivory.vercel.app/og-image.png' ],
+        images: [ 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s' ],
         creator: '@yourtwitter',
     },
     metadataBase: new URL('https://seo-test-ivory.vercel.app'),
@@ -109,6 +111,7 @@ export default async function RootLayout({
                 style={{display: 'none', visibility: 'hidden'}}
             ></iframe>
         </noscript>
+        <Header/>
         {children}
         </body>
         </html>

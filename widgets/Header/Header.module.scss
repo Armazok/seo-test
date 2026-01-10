@@ -1,0 +1,21 @@
+.Header {
+    &__nav {
+    }
+
+    &__lists {
+        list-style: none;
+
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        padding: 15px 0;
+
+        &__list {
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}
