@@ -1,5 +1,5 @@
 import cls from './Button.module.scss';
-import type { ButtonHTMLAttributes } from 'react';
+import { type ButtonHTMLAttributes, memo } from 'react';
 
 interface ButtonProps
     extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'aria-label'> {
@@ -9,7 +9,7 @@ interface ButtonProps
     disabled?: boolean,
 }
 
-export const Button = ({
+export const Button = memo(({
                            children,
                            'aria-label': ariaLabel,
                            title,
@@ -30,6 +30,6 @@ export const Button = ({
             {children}
         </button>
     );
-};
+});
 
 Button.displayName = 'Button';

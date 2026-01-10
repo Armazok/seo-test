@@ -4,8 +4,13 @@ import type { Metadata } from 'next';
 import { getProductById } from '@/app/product/[id]/model/getProductById';
 import { Product } from '@/components/ProductsList/Product/Product';
 
-export async function generateMetadata(): Promise<Metadata> {
-    const productById = await getProductById({id: 1});
+export async function generateMetadata({
+                                           params,
+                                       }: {
+    params: Promise<{ id: string }>
+}): Promise<Metadata> {
+    const {id} = await params
+    const productById = await getProductById({id: id});
 
     return {
         title: `Товар ${productById.title}`,
@@ -14,8 +19,14 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
-export default async function Page() {
-    const productById = await getProductById({id: 1});
+export default async function Page({
+                                       params,
+                                   }: {
+    params: Promise<{ id: string }>
+}) {
+    const {id} = await params;
+
+    const productById = await getProductById({id: id});
 
     return (
         <article role={'article'}>

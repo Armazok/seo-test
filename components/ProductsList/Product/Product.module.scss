@@ -1,0 +1,15 @@
+.Product {
+    border: 2px solid black;
+    max-width: 300px;
+    padding: 15px;
+    cursor: pointer;
+    user-select: none;
+
+    &__title {
+    }
+
+    &__desc {
+    }
+
+    margin-bottom: 15px;
+}

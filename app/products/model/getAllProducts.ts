@@ -8,6 +8,7 @@ type getAllProductsType = {
 }
 export const getAllProducts = async ({limit = 30, skip = 0}: getAllProductsType): Promise<ProductsType> => {
     let res = await fetch(process.env.DB_HOST_DUMMY + `/products?limit=${limit}&skip=${skip}`, {cache: 'no-cache'});
+    console.log('getAllProducts');
 
     if (!res.ok) {
         throw new Error('Product not found');

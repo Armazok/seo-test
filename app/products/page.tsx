@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-    const products = await getAllProducts({});
+    const products = await getAllProducts({})
 
     return (
         <section role={'main'} aria-label={'Главная страница продуктов'}>

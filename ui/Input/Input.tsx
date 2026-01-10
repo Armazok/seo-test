@@ -1,12 +1,12 @@
 'use client';
 
-import { type DetailedHTMLProps, type InputHTMLAttributes, useId } from 'react';
+import { type DetailedHTMLProps, type InputHTMLAttributes, memo, useId } from 'react';
 
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     label?: string;
 }
 
-export const Input = ({label,...otherProps}: InputProps) => {
+export const Input = memo(({label,...otherProps}: InputProps) => {
     const id = useId();
 
     return (
@@ -15,6 +15,6 @@ export const Input = ({label,...otherProps}: InputProps) => {
             <input {...otherProps} id={id} type="text"/>
         </label>
     );
-};
+});
 
 Input.displayName = 'Input'
