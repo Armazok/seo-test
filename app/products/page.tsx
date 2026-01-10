@@ -47,23 +47,15 @@ export default async function Page() {
             {
                 '@type': 'ListItem',
                 'position': 1,
-                'name': 'Наши продукты',
-                'item': 'https://seo-test-ivory.vercel.app/products'
+                'name': 'Продукты',
+                'item': 'https://seo-test-ivory.vercel.app/products',
             },
-            ...products.products.map((p, index) => ({
-                '@type': 'ListItem',
-                'position': index + 2,
-                'item': {
-                    '@type': 'Product',
-                    'name': p.title,
-                    'url': `https://seo-test-ivory.vercel.app/products/${p.id}`
-                }
-            }))
-        ]
-    }
+        ],
+    };
 
     return (
         <>
+            {/* CollectionPage JSON-LD */}
             <Script
                 nonce={nonce}
                 type="application/ld+json"
@@ -71,6 +63,8 @@ export default async function Page() {
                     __html: JSON.stringify(jsonLd),
                 }}
             />
+
+            {/* BreadcrumbList JSON-LD */}
             <Script
                 nonce={nonce}
                 type="application/ld+json"
