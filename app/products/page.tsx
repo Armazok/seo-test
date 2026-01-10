@@ -39,6 +39,20 @@ export default async function Page() {
             }))
         }
     }
+
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Наши продукты",
+                "item": "https://seo-test-ivory.vercel.app/products"
+            }
+        ]
+    }
+
     return (
         <>
             <Script
@@ -46,6 +60,13 @@ export default async function Page() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(jsonLd),
+                }}
+            />
+            <Script
+                nonce={nonce}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(breadcrumbJsonLd),
                 }}
             />
 
