@@ -4,7 +4,7 @@ export default function robots() {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: '/private/',
+                disallow: '/private',
             },
         ],
         sitemap: 'https://seo-test-ivory.vercel.app/sitemap.xml',
