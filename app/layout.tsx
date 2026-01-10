@@ -42,6 +42,7 @@ export const metadata: Metadata = {
         images: [ 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s' ],
         creator: '@yourtwitter',
     },
+    icons: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s',
     metadataBase: new URL('https://seo-test-ivory.vercel.app'),
     alternates: {
         canonical: 'https://seo-test-ivory.vercel.app/',
