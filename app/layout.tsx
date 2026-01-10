@@ -73,6 +73,26 @@ export default async function RootLayout({
     return (
         <html lang="ru">
         <Head>
+            {/*Schema*/}
+            <Script
+                nonce={nonce}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'WebSite',
+                        'name': 'SEO Test Site',
+                        'url': 'https://seo-test-ivory.vercel.app',
+                        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s',
+                        'author': {
+                            '@type': 'Person',
+                            'name': 'Nikolay',
+                            'url': 'https://github.com/Armazok'
+                        }
+                    })
+                }}
+            />
+
             {/*Google Analytics*/}
             <Script
                 nonce={nonce}
