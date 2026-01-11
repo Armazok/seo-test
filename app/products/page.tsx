@@ -21,6 +21,8 @@ export default async function Page() {
     const headersList = await headers();
     const nonce = headersList.get('x-nonce') ?? '';
 
+
+
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
@@ -28,18 +30,43 @@ export default async function Page() {
         'mainEntity': {
             '@type': 'ItemList',
             'numberOfItems': products.total,
-            'itemListElement': products.products.map((p, index) => ({
-                '@type': 'ListItem',
-                'position': index + 1,
-                'item': {
-                    '@type': 'Product',
-                    'name': p.title,
-                    'image': p.images.map((el) => el),
-                    'url': `https://seo-test-ivory.vercel.app/products/${p.id}`,
-                }
-            }))
+            'itemListElement': products.products.map((p, index) => {
+                const reviewCount = p.reviews.length;
+
+                const ratingValue =
+                    reviewCount > 0
+                        ? Number(
+                            (
+                                p.reviews.reduce((sum, r) => sum + r.rating, 0) /
+                                reviewCount
+                            ).toFixed(2)
+                        )
+                        : undefined;
+
+                return {
+                    '@type': 'ListItem',
+                    'position': index + 1,
+                    'item': {
+                        '@type': 'Product',
+                        'name': p.title,
+                        'image': p.images,
+                        'url': `https://seo-test-ivory.vercel.app/products/${p.id}`,
+
+                        ...(reviewCount > 0 && {
+                            'aggregateRating': {
+                                '@type': 'AggregateRating',
+                                'ratingValue': ratingValue,
+                                'reviewCount': reviewCount,
+                                'bestRating': 5,
+                                'worstRating': 1,
+                            }
+                        })
+                    }
+                };
+            })
         }
-    }
+    };
+
 
     const breadcrumbJsonLd = {
         '@context': 'https://schema.org',
