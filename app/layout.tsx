@@ -126,14 +126,14 @@ export default async function RootLayout({
         />
 
         {/* Google Search Console (noscript) */}
-        <noscript>
-            <iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-54M87R22"
-                height="0"
-                width="0"
-                style={{display: 'none', visibility: 'hidden'}}
-            ></iframe>
-        </noscript>
+        {/*<noscript>*/}
+        {/*    <iframe*/}
+        {/*        src="https://www.googletagmanager.com/ns.html?id=GTM-54M87R22"*/}
+        {/*        height="0"*/}
+        {/*        width="0"*/}
+        {/*        style={{display: 'none', visibility: 'hidden'}}*/}
+        {/*    ></iframe>*/}
+        {/*</noscript>*/}
         <Header/>
         {children}
         </body>
