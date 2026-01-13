@@ -95,16 +95,20 @@ export default async function RootLayout({
         {/*Google Analytics*/}
         <Script
             nonce={nonce}
-            async src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
         />
         <Script
-            nonce={nonce}
+            id="ga-init"
             strategy="afterInteractive"
+            nonce={nonce}
             dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-MJKXP17LRC');`
+                __html: `
+                 window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag('js', new Date());
+                 gtag('config', 'G-MJKXP17LRC');
+    `,
             }}
         />
 
