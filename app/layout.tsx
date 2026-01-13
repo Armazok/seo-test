@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import Script from 'next/dist/client/script';
+import Script from 'next/script';
 import { headers } from 'next/dist/server/request/headers';
 import { Header } from '@/widgets';
 import './globals.scss';
@@ -71,6 +71,7 @@ export default async function RootLayout({
 
     return (
         <html lang="ru">
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/*Schema*/}
         <Script
             nonce={nonce}
@@ -94,10 +95,12 @@ export default async function RootLayout({
         {/*Google Analytics*/}
         <Script
             nonce={nonce}
+            strategy="afterInteractive"
             async src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
         />
         <Script
             nonce={nonce}
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
                 __html: `window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
@@ -109,7 +112,6 @@ export default async function RootLayout({
         {/* Google Search Console */}
         <Script
             nonce={nonce}
-            id="gtm-script"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
                 __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -119,7 +121,7 @@ export default async function RootLayout({
                     })(window,document,'script','dataLayer','GTM-54M87R22');`,
             }}
         />
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+
         {/* Google Search Console (noscript) */}
         <noscript>
             <iframe
