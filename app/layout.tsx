@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import Head from 'next/dist/shared/lib/head';
 import Script from 'next/dist/client/script';
 import { headers } from 'next/dist/server/request/headers';
 import { Header } from '@/widgets';
@@ -72,56 +71,54 @@ export default async function RootLayout({
 
     return (
         <html lang="ru">
-        <Head>
-            {/*Schema*/}
-            <Script
-                nonce={nonce}
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'WebSite',
-                        'name': 'SEO Test Site',
-                        'url': 'https://seo-test-ivory.vercel.app',
-                        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s',
-                        'author': {
-                            '@type': 'Person',
-                            'name': 'Nikolay',
-                            'url': 'https://github.com/Armazok'
-                        }
-                    })
-                }}
-            />
+        {/*Schema*/}
+        <Script
+            nonce={nonce}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'WebSite',
+                    'name': 'SEO Test Site',
+                    'url': 'https://seo-test-ivory.vercel.app',
+                    'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrTuyVvRpS-lz4Rg4jVaT9P7iKAx3T2vK5Q&s',
+                    'author': {
+                        '@type': 'Person',
+                        'name': 'Nikolay',
+                        'url': 'https://github.com/Armazok'
+                    }
+                })
+            }}
+        />
 
-            {/*Google Analytics*/}
-            <Script
-                nonce={nonce}
-                async src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
-            />
-            <Script
-                nonce={nonce}
-                dangerouslySetInnerHTML={{
-                    __html: `window.dataLayer = window.dataLayer || [];
+        {/*Google Analytics*/}
+        <Script
+            nonce={nonce}
+            async src="https://www.googletagmanager.com/gtag/js?id=G-MJKXP17LRC"
+        />
+        <Script
+            nonce={nonce}
+            dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
                     gtag('config', 'G-MJKXP17LRC');`
-                }}
-            />
+            }}
+        />
 
-            {/* Google Search Console */}
-            <Script
-                nonce={nonce}
-                id="gtm-script"
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                    __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {/* Google Search Console */}
+        <Script
+            nonce={nonce}
+            id="gtm-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                     })(window,document,'script','dataLayer','GTM-54M87R22');`,
-                }}
-            />
-        </Head>
+            }}
+        />
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Google Search Console (noscript) */}
         <noscript>
